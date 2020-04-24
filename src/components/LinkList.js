@@ -4,19 +4,23 @@ import Link from './Link';
 import { connect } from 'react-redux';
 
 class LinkList extends Component {
-  render() {
-    const linkList = this.props.linkList.map((link) => (
-      <Link
-        key={link.id}
-        id={link.id}
-        text={link.text}
-        url={link.url}
-        created={link.created}
-        points={link.points}
-      />
-    ));
+  filterLinkList = (filterType) => {
+    switch (filterType) {
+      case 'MOST_VOTED':
+        return this.props.linkList.sort((l1, l2) => l2.points - l1.points);
+      case 'LESS_VOTED':
+        return this.props.linkList.sort((l1, l2) => l1.points - l2.points);
+      default:
+        return this.props.linkList;
+    }
+  };
 
-    return <div>{linkList}</div>;
+  render() {
+    const newLinkList = this.filterLinkList(
+      this.props.activeFilter
+    ).map((link) => <Link key={link.id} link={link} />);
+
+    return <div>{newLinkList}</div>;
   }
 }
 
