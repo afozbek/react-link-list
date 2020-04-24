@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-function App() {
+import LinkList from './components/LinkList';
+import NewLink from './components/NewLink';
+import Notification from './components/Notification';
+import { connect } from 'react-redux';
+
+const App = ({ notification }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Link List</Link>
+            </li>
+            <li>
+              <Link to="/new-link">New Link</Link>
+            </li>
+          </ul>
+        </nav>
 
-export default App;
+        {notification.notify ? <Notification /> : null}
+
+        <Switch>
+          <Route path="/new-link">
+            <NewLink />
+          </Route>
+          <Route path="/">
+            <LinkList />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    notification: state.notification,
+  };
+};
+
+export default connect(mapStateToProps)(App);
