@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import LinkList from './components/LinkList';
 import NewLink from './components/NewLink';
 import Notification from './components/Notification';
 import { connect } from 'react-redux';
+import Main from './components/Main';
 
 const App = ({ notification }) => {
   return (
     <Router>
       <div>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Link List</Link>
@@ -19,7 +19,7 @@ const App = ({ notification }) => {
               <Link to="/new-link">New Link</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         {notification.notify ? <Notification /> : null}
 
@@ -28,7 +28,7 @@ const App = ({ notification }) => {
             <NewLink />
           </Route>
           <Route path="/">
-            <LinkList />
+            <Main />
           </Route>
         </Switch>
       </div>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { upVote, downVote, deleteLink } from '../store/linkList/actions';
 
 const Link = (props) => {
+  console.log(props);
   return (
     <div className="m-link">
       <div className="m-link__point">
