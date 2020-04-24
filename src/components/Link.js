@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { upVote, downVote, deleteLink } from '../store/linkList/actions';
+import DeleteTodoModal from './DeleteTodoModal';
 
 const Link = ({ link, deleteLink, upVote, downVote }) => {
+  const [isModelOpening, setModal] = useState(false);
+
+  const closeModal = () => {
+    // Save the todo item
+    setModal(false);
+  };
+
   return (
     <div className="m-link">
       <div className="m-link__point">
@@ -24,12 +32,13 @@ const Link = ({ link, deleteLink, upVote, downVote }) => {
         </div>
       </div>
 
-      <button
-        className="m-link__deleteButton"
-        onClick={() => deleteLink(link.id)}
-      >
+      <button className="m-link__deleteButton" onClick={() => setModal(true)}>
         X
       </button>
+
+      {isModelOpening ? (
+        <DeleteTodoModal closeModal={closeModal} link={link} />
+      ) : null}
     </div>
   );
 };
@@ -37,7 +46,6 @@ const Link = ({ link, deleteLink, upVote, downVote }) => {
 const mapDispatchToProps = {
   upVote,
   downVote,
-  deleteLink,
 };
 
 export default connect(null, mapDispatchToProps)(Link);

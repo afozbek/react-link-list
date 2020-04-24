@@ -6,7 +6,7 @@
 
 .o-app {
   &__container {
-    width: 400px;
+    width: 350px;
     margin: 0 auto;
     position: relative;
     padding: 20px 0;
@@ -50,6 +50,16 @@
   }
 }
 
+.a-submitBtn {
+  width: 100px;
+  align-self: end;
+  border-radius: 30px;
+  height: 40px;
+  font-size: 18px;
+  color: #fff;
+  background: #000;
+}
+
 .m-linkForm {
   width: 400px;
   margin: 0 auto;
@@ -79,15 +89,6 @@
     padding: 10px 5px;
     border-radius: 3px;
   }
-
-  &__submitBtn {
-    width: 100px;
-    align-self: end;
-    border-radius: 30px;
-    height: 40px;
-    color: #fff;
-    background: #000;
-  }
 }
 
 .m-notification {
@@ -103,10 +104,8 @@
 }
 
 .m-link {
-  width: 300px;
-  margin: 0 auto;
-
   display: flex;
+  margin: 10px 0;
 
   position: relative;
 
@@ -169,6 +168,97 @@
 
     &.-show {
       display: block;
+    }
+  }
+}
+
+.m-modal {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+
+  &__container {
+    position: relative;
+
+    background: #fff;
+
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 100px;
+    overflow: hidden;
+  }
+
+  &__buttonWrapper {
+    margin-top: 20px;
+  }
+
+  &__body {
+    padding: 20px;
+    padding-top: 0;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  &__header {
+    margin-bottom: 20px;
+    background: #000;
+    color: #fff;
+    text-align: left;
+    padding: 5px 10px;
+  }
+
+  &__closeBtn {
+    position: absolute;
+    cursor: pointer;
+    top: 0px;
+    right: 10px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #fff;
+  }
+
+  &__infoMsg {
+    margin-bottom: 20px;
+  }
+
+  &__todoInput {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 15px;
+    padding-left: 45px;
+    font-size: 17px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    &::placeholder {
+      font-size: 15px;
+    }
+  }
+
+  &__updateBtn {
+    width: 30%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      border-color: rgba(74, 74, 189, 0.91);
+      background: rgba(74, 74, 189, 0.91);
     }
   }
 }

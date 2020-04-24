@@ -58,7 +58,7 @@ const NewLink = ({ addLink, notify }) => {
         />
       </div>
 
-      <button className="m-linkForm__submitBtn" type="submit">
+      <button className="a-submitBtn" type="submit">
         ADD
       </button>
     </form>
