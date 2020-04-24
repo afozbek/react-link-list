@@ -56,7 +56,7 @@ const upVoteLink = (state, id) => {
 
 const downVoteLink = (state, id) => {
   const newState = state.map((link) => {
-    if (link.id === id) {
+    if (link.id === id && link.points >= 1) {
       return { ...link, points: link.points - 1 };
     }
     return link;
