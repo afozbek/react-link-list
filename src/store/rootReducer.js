@@ -1,7 +1,9 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import { userReducer } from "./user/reducer";
+import { linkListReducer } from './linkList/reducer';
+import { notificationReducer } from './notification/reducer';
 
 export default combineReducers({
-  users: userReducer
+  linkList: linkListReducer,
+  notification: notificationReducer,
 });
