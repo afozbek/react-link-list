@@ -6,7 +6,7 @@ import {
   DELETE_LINK,
 } from './types';
 
-const initialState = [];
+const initialState = JSON.parse(localStorage.getItem('linkList')) || [];
 
 export const linkListReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -36,27 +36,41 @@ const getLinkList = (linkList) => {
 };
 
 const addLink = (state, link) => {
+  localStorage.setItem('linkList', JSON.stringify([...state, link]));
+
   return [...state, link];
 };
 
 const upVoteLink = (state, id) => {
-  return state.map((link) => {
+  const newState = state.map((link) => {
     if (link.id === id) {
-      link.points += 1;
+      return { ...link, points: link.points + 1 };
     }
     return link;
   });
+
+  localStorage.setItem('linkList', JSON.stringify(newState));
+
+  return newState;
 };
 
 const downVoteLink = (state, id) => {
-  return state.map((link) => {
+  const newState = state.map((link) => {
     if (link.id === id) {
-      link.points -= 1;
+      return { ...link, points: link.points - 1 };
     }
     return link;
   });
+
+  localStorage.setItem('linkList', JSON.stringify(newState));
+
+  return newState;
 };
 
 const deleteLink = (state, id) => {
-  return state.filter((link) => link.id !== id);
+  const newState = state.filter((link) => link.id !== id);
+
+  localStorage.setItem('linkList', JSON.stringify(newState));
+
+  return newState;
 };
