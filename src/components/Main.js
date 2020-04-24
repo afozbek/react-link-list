@@ -1,27 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LinkList from './LinkList';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Main = (props) => {
-  const [linkList, setNewLinkList] = useState(props.linkList);
   const [filter, setFilter] = useState('');
-
-  const handleFilter = (e) => {
-    setFilter(e.target.value);
-
-    switch (filter) {
-      case 'MOST_VOTED':
-        setNewLinkList(props.linkList.sort((l1, l2) => l2.points - l1.points));
-        break;
-      case 'LESS_VOTED':
-        setNewLinkList(props.linkList.sort((l1, l2) => l1.points - l2.points));
-        break;
-      default:
-        setNewLinkList(props.linkList);
-        break;
-    }
-  };
 
   return (
     <React.Fragment>
@@ -36,16 +19,14 @@ const Main = (props) => {
         <select
           name="filter_linkList"
           id="filter_linkList"
-          onChange={handleFilter}
+          onChange={(e) => setFilter(e.target.value)}
         >
-          <option disabled selected>
-            Order By
-          </option>
+          <option value="ALL">Order By</option>
           <option value="MOST_VOTED">Most Voted(Z->A)</option>
           <option value="LESS_VOTED">Less Voted(A->Z)</option>
         </select>
 
-        <LinkList />
+        <LinkList activeFilter={filter} />
       </div>
     </React.Fragment>
   );

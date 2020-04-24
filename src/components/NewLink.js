@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { notify } from '../store/notification/actions';
 import { addLink } from '../store/linkList/actions';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const NewLink = ({ addLink, notify }) => {
   const [linkName, setLinkName] = useState('');
