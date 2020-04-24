@@ -1,0 +1,128 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.m-linkForm {
+  width: 400px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    margin-bottom: 25px;
+  }
+
+  &__navLink {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+    margin-bottom: 30px;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  &__input {
+    padding: 10px 5px;
+    border-radius: 3px;
+  }
+
+  &__submitBtn {
+    width: 100px;
+    align-self: end;
+    border-radius: 30px;
+    height: 40px;
+    color: #fff;
+    background: #000;
+  }
+}
+
+.m-notification {
+  padding: 20px;
+  text-align: center;
+  border-radius: 3px;
+  width: 400px;
+  background: greenyellow;
+  position: absolute;
+  top: 50px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+
+.m-link {
+  width: 300px;
+  margin: 0 auto;
+
+  display: flex;
+
+  position: relative;
+
+  &:hover {
+    .m-link__deleteButton {
+      display: block;
+    }
+  }
+
+  &__point {
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #f7f7f7;
+    border-radius: 3px;
+    border: 1px solid #3f3d3d;
+    margin-right: 10px;
+  }
+
+  &__url {
+    margin-bottom: 10px;
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__buttonList {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: auto;
+  }
+
+  &__button {
+    background: none;
+
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__deleteButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    color: red;
+    font-size: 20px;
+    display: none;
+    cursor: pointer;
+
+    &.-show {
+      display: block;
+    }
+  }
+}
