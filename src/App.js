@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import NewLink from './components/NewLink';
 import Notification from './components/Notification';
@@ -10,17 +10,6 @@ const App = ({ notification }) => {
   return (
     <Router>
       <div>
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Link List</Link>
-            </li>
-            <li>
-              <Link to="/new-link">New Link</Link>
-            </li>
-          </ul>
-        </nav> */}
-
         {notification.notify ? <Notification /> : null}
 
         <Switch>
