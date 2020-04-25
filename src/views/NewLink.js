@@ -50,7 +50,7 @@ const NewLink = ({ addLink, notify }) => {
       <FormControl
         id="link_url"
         labelName="Link Url:"
-        type="text"
+        type="url"
         placeholder="e.g. http://abc.xyz"
         isRequired={true}
         changeHandler={(e) => setLinkUrl(e.target.value)}
