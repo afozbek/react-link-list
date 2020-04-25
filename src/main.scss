@@ -147,9 +147,13 @@ body {
 
 .m-link {
   display: flex;
-  margin: 10px 0;
+  margin-bottom: 20px;
 
   position: relative;
+
+  &:first-of-type {
+    margin-top: 10px;
+  }
 
   &:hover {
     .m-link__deleteButton {
@@ -159,8 +163,8 @@ body {
 
   &__point {
     padding: 20px;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -169,7 +173,7 @@ body {
     background: #f7f7f7;
     border-radius: 3px;
     border: 1px solid #3f3d3d;
-    margin-right: 10px;
+    margin-right: 15px;
   }
 
   &__url {
