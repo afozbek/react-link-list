@@ -9,7 +9,7 @@ import Listing from './views/Listing';
 const App = ({ notification }) => {
   return (
     <Router>
-      <div>
+      <div className="o-app__container">
         {notification.showNotification ? <Notification /> : null}
 
         <Switch>
