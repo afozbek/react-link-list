@@ -13,7 +13,11 @@ const Pagination = ({ totalElements, pageSize, changePage, currentPage }) => {
   };
 
   const buttons = getPages().map((i) => (
-    <button className="o-app__paginationButton" onClick={() => changePage(i)}>
+    <button
+      key={i}
+      className="o-app__paginationButton"
+      onClick={() => changePage(i)}
+    >
       {i + 1}
     </button>
   ));
