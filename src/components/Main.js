@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import LinkList from './LinkList';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Pagination from './Pagination';
 
-const Main = (props) => {
+const Main = ({ linkList }) => {
   const [filter, setFilter] = useState('');
+  const [pageSize, setPageSize] = useState(5);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const changeFilter = (e) => {
+    setFilter(e.target.value);
+
+    setCurrentPage(0);
+  };
 
   return (
     <React.Fragment>
@@ -19,14 +28,27 @@ const Main = (props) => {
         <select
           name="filter_linkList"
           id="filter_linkList"
-          onChange={(e) => setFilter(e.target.value)}
+          onChange={changeFilter}
         >
           <option value="ALL">Order By</option>
           <option value="MOST_VOTED">Most Voted(Z->A)</option>
           <option value="LESS_VOTED">Less Voted(A->Z)</option>
         </select>
 
-        <LinkList activeFilter={filter} />
+        <LinkList
+          activeFilter={filter}
+          pageSize={pageSize}
+          currentPage={currentPage}
+        />
+
+        {linkList.length > pageSize ? (
+          <Pagination
+            pageSize={pageSize}
+            currentPage={currentPage}
+            totalElements={linkList.length}
+            changePage={(pageNumber) => setCurrentPage(pageNumber)}
+          />
+        ) : null}
       </div>
     </React.Fragment>
   );

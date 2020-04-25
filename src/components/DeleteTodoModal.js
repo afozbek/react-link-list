@@ -1,16 +1,24 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { deleteLink } from './../store/linkList/actions';
+import { notify } from './../store/notification/actions';
 
-const EditTodoModal = ({ closeModal, link, deleteLink }) => {
+const EditTodoModal = ({ closeModal, link, deleteLink, notify }) => {
   const modal = useRef();
 
   const overlayClickHandler = (e) => {
     if (e.target === modal.current) {
       closeModal();
     }
+  };
+
+  const deleteLinkHandler = () => {
+    deleteLink(link.id);
+
+    const notifyText = link.text + ' removed.';
+    notify(notifyText);
   };
 
   return (
@@ -29,7 +37,7 @@ const EditTodoModal = ({ closeModal, link, deleteLink }) => {
           </p>
 
           <div className="m-modal__buttonWrapper">
-            <button className="a-submitBtn" onClick={() => deleteLink(link.id)}>
+            <button className="a-submitBtn" onClick={deleteLinkHandler}>
               OK
             </button>
             <button className="a-submitBtn" onClick={() => closeModal()}>
@@ -54,6 +62,7 @@ EditTodoModal.propTypes = {};
 
 const mapDispatchToProps = {
   deleteLink,
+  notify,
 };
 
 export default connect(null, mapDispatchToProps)(EditTodoModal);

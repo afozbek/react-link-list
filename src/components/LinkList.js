@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Link from './Link';
 import { connect } from 'react-redux';
+import Pagination from './Pagination';
 
 class LinkList extends Component {
   filterLinkList = (filterType) => {
@@ -11,16 +12,27 @@ class LinkList extends Component {
       case 'LESS_VOTED':
         return this.props.linkList.sort((l1, l2) => l1.points - l2.points);
       default:
-        return this.props.linkList;
+        return this.props.linkList.sort(
+          (l1, l2) => l2.created_time - l1.created_time
+        );
     }
   };
 
+  // PAGINATION
+  paginate = (array, page_size, page_number) => {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+  };
+
   render() {
-    const newLinkList = this.filterLinkList(
-      this.props.activeFilter
+    const newLinkList = this.filterLinkList(this.props.activeFilter);
+
+    const pageList = this.paginate(
+      newLinkList,
+      this.props.pageSize,
+      this.props.currentPage + 1
     ).map((link) => <Link key={link.id} link={link} />);
 
-    return <div>{newLinkList}</div>;
+    return <div>{pageList}</div>;
   }
 }
 
