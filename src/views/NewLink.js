@@ -8,8 +8,6 @@ import { addLink } from '../store/linkList/actions';
 import { SubmitButton } from '../components/common/SubmitButton';
 import FormControl from '../components/NewLink/FormControl';
 
-import { isValidURL } from '../util';
-
 const NewLink = ({ addLink, notify }) => {
   const [linkName, setLinkName] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
@@ -29,6 +27,11 @@ const NewLink = ({ addLink, notify }) => {
 
     const notifyText = linkName + ' added.';
     notify(notifyText);
+
+    e.target.reset();
+
+    // Link ekledikten sonra ilk inputa focus ol
+    document.querySelector('.m-linkForm__input').focus();
   };
 
   return (

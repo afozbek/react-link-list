@@ -24,26 +24,32 @@ const Pagination = ({ totalElements, pageSize, changePage, currentPage }) => {
       {i + 1}
     </button>
   ));
+
+  console.log(currentPage);
+  console.log(Math.ceil(totalElements / pageSize));
+
   return (
     <div className="o-app__paginationWrapper">
-      {currentPage === 1 ? (
+      {currentPage !== 0 && (
         <button
           className="o-app__paginationButton"
           onClick={() => changePage(currentPage - 1)}
         >
           &lt;
         </button>
-      ) : null}
+      )}
 
       {buttons}
 
-      <button
-        className="o-app__paginationButton"
-        data-test="nextPageButton"
-        onClick={() => changePage(currentPage + 1)}
-      >
-        &gt;
-      </button>
+      {currentPage !== Math.ceil(totalElements / pageSize) - 1 && (
+        <button
+          className="o-app__paginationButton"
+          data-test="nextPageButton"
+          onClick={() => changePage(currentPage + 1)}
+        >
+          &gt;
+        </button>
+      )}
     </div>
   );
 };
