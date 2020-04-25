@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Link from './Link/Link';
+import Link from './Link';
 import { connect } from 'react-redux';
+
+import { FILTER_TYPES } from '../../util';
 
 class LinkList extends Component {
   filterLinkList = (filterType) => {
+    const { MOST_VOTED, LESS_VOTED } = FILTER_TYPES;
+
     switch (filterType) {
-      case 'MOST_VOTED':
+      case MOST_VOTED:
         return this.props.linkList.sort((l1, l2) => l2.points - l1.points);
-      case 'LESS_VOTED':
+      case LESS_VOTED:
         return this.props.linkList.sort((l1, l2) => l1.points - l2.points);
       default:
         return this.props.linkList.sort(
@@ -26,13 +30,13 @@ class LinkList extends Component {
   render() {
     const newLinkList = this.filterLinkList(this.props.activeFilter);
 
-    const pageList = this.paginate(
+    const paginatedLinkList = this.paginate(
       newLinkList,
       this.props.pageSize,
       this.props.currentPage + 1
     ).map((link) => <Link key={link.id} link={link} />);
 
-    return <div>{pageList}</div>;
+    return <div>{paginatedLinkList}</div>;
   }
 }
 

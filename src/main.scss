@@ -4,12 +4,18 @@
   box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .o-app {
   &__container {
     width: 350px;
     margin: 0 auto;
     position: relative;
-    padding: 20px 0;
+    padding-top: 55px;
   }
 
   &__newLinkButton {
@@ -64,6 +70,11 @@
       border: 1px solid #fff;
       cursor: pointer;
       padding: 5px;
+
+      &.-selected {
+        border-color: #ccc;
+        border-radius: 3px;
+      }
 
       &:hover {
         border-color: #ccc;
@@ -121,12 +132,17 @@
   text-align: center;
   border-radius: 3px;
   width: 400px;
-  background: greenyellow;
-  position: absolute;
+  background: #ddf9d3;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #4ba149;
+  position: fixed;
   z-index: 10;
-  top: 50px;
+  top: 40px;
   transform: translate(-50%, -50%);
   left: 50%;
+  border: 1px solid #4ba149;
+  box-shadow: -3px 0px 55px -12px rgba(0, 0, 0, 0.75);
 }
 
 .m-link {

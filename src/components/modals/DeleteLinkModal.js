@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { deleteLink } from '../../store/linkList/actions';
 import { notify } from '../../store/notification/actions';
 
-const DeleteTodoModal = ({ closeModal, link, deleteLink, notify }) => {
+const DeleteLinkModal = ({ closeModal, link, deleteLink, notify }) => {
   const modal = useRef();
 
   const overlayClickHandler = (e) => {
@@ -58,7 +58,7 @@ const DeleteTodoModal = ({ closeModal, link, deleteLink, notify }) => {
   );
 };
 
-DeleteTodoModal.propTypes = {
+DeleteLinkModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   link: PropTypes.object.isRequired,
   deleteLink: PropTypes.func.isRequired,
@@ -70,4 +70,4 @@ const mapDispatchToProps = {
   notify,
 };
 
-export default connect(null, mapDispatchToProps)(DeleteTodoModal);
+export default connect(null, mapDispatchToProps)(DeleteLinkModal);

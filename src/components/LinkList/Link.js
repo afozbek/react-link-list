@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { upVote, downVote } from '../../../store/linkList/actions';
-import DeleteTodoModal from '../../modals/DeleteTodoModal';
+import { upVote, downVote } from '../../store/linkList/actions';
+import DeleteTodoModal from '../modals/DeleteLinkModal';
 
 const Link = ({ link, upVote, downVote }) => {
   const [isModelOpening, setModal] = useState(false);
@@ -15,7 +15,7 @@ const Link = ({ link, upVote, downVote }) => {
   return (
     <div className="m-link">
       <div className="m-link__point">
-        <p>{link.points}</p>
+        <h1>{link.points}</h1>
         <p>POINTS</p>
       </div>
       <div className="m-link__desc">
