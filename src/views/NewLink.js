@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { notify } from '../store/notification/actions';
 import { addLink } from '../store/linkList/actions';
-import { NavLink } from 'react-router-dom';
 import { SubmitButton } from '../components/common/SubmitButton';
+import FormControl from '../components/NewLink/FormControl';
+
+import { isValidURL, haveEnoughCharacters } from '../util';
 
 const NewLink = ({ addLink, notify }) => {
   const [linkName, setLinkName] = useState('');
@@ -35,29 +38,23 @@ const NewLink = ({ addLink, notify }) => {
       </NavLink>
       <h1 className="m-linkForm__header">Add New Link</h1>
 
-      <div className="m-linkForm__group">
-        <label htmlFor="link_name">Link Name:</label>
-        <input
-          id="link_name"
-          className="m-linkForm__input"
-          placeholder="e.g. Alphabet"
-          type="text"
-          required
-          onChange={(e) => setLinkName(e.target.value)}
-        />
-      </div>
+      <FormControl
+        id="link_name"
+        labelName="Link Name:"
+        type="text"
+        placeholder="e.g. Alphabet"
+        isRequired={true}
+        changeHandler={(e) => setLinkName(e.target.value)}
+      />
 
-      <div className="m-linkForm__group">
-        <label htmlFor="link_url">Link URL:</label>
-        <input
-          id="link_url"
-          className="m-linkForm__input"
-          placeholder="e.g. http://abc.xyz"
-          type="text"
-          required
-          onChange={(e) => setLinkUrl(e.target.value)}
-        />
-      </div>
+      <FormControl
+        id="link_url"
+        labelName="Link Url:"
+        type="text"
+        placeholder="e.g. http://abc.xyz"
+        isRequired={true}
+        changeHandler={(e) => setLinkUrl(e.target.value)}
+      />
 
       <SubmitButton />
     </form>
