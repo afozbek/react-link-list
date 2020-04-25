@@ -18,7 +18,7 @@ const NewLink = ({ addLink, notify }) => {
       text: linkName,
       url: linkUrl,
       points: 0,
-      created_time: new Date(),
+      created_time: new Date().getTime(),
     };
 
     addLink(newLink);
