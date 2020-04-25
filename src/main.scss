@@ -48,6 +48,29 @@
     font-size: 22px;
     width: 60%;
   }
+
+  &__pagination {
+    &Wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    &Button {
+      margin: 0 5px;
+      font-weight: bold;
+      font-size: 17px;
+      background: none;
+      border: 1px solid #fff;
+      cursor: pointer;
+      padding: 5px;
+
+      &:hover {
+        border-color: #ccc;
+        border-radius: 3px;
+      }
+    }
+  }
 }
 
 .a-submitBtn {
