@@ -1,6 +1,6 @@
 import { NOTIFY, CLEAR_NOTIFY } from './types';
 
-const initialState = { showNotification: false, text: '', displayTime: 100000 };
+const initialState = { showNotification: false, text: '', displayTime: 2000 };
 
 export const notificationReducer = (state = initialState, action) => {
   switch (action.type) {
