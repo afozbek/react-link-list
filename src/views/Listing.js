@@ -8,7 +8,7 @@ import InfoMessage from './../components/common/InfoMessage';
 
 const Main = ({ linkList }) => {
   const [filter, setFilter] = useState('');
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(3);
   const [currentPage, setCurrentPage] = useState(0);
 
   const changeFilter = (e) => {
