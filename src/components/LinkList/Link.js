@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { upVote, downVote } from '../../store/linkList/actions';
 import DeleteTodoModal from '../modals/DeleteLinkModal';
 
-const Link = ({ link, upVote, downVote }) => {
+export const Link = ({ link, upVote, downVote }) => {
   const [isModelOpening, setModal] = useState(false);
 
   const closeModal = () => {
@@ -13,7 +13,7 @@ const Link = ({ link, upVote, downVote }) => {
   };
 
   return (
-    <div className="m-link">
+    <div className="m-link" data-test>
       <div className="m-link__point">
         <h1>{link.points}</h1>
         <p>POINTS</p>
@@ -23,22 +23,34 @@ const Link = ({ link, upVote, downVote }) => {
         <p className="m-link__url">({link.url})</p>
 
         <div className="m-link__buttonList">
-          <button className="m-link__button" onClick={() => upVote(link.id)}>
+          <button
+            className="m-link__button"
+            data-upvote-test
+            onClick={() => upVote(link.id)}
+          >
             &uarr; Up Vote
           </button>
-          <button className="m-link__button" onClick={() => downVote(link.id)}>
+          <button
+            className="m-link__button"
+            data-downvote-test
+            onClick={() => downVote(link.id)}
+          >
             &darr; Down Vote
           </button>
         </div>
       </div>
 
-      <button className="m-link__deleteButton" onClick={() => setModal(true)}>
+      <button
+        className="m-link__deleteButton"
+        data-delete-test
+        onClick={() => setModal(true)}
+      >
         X
       </button>
 
-      {isModelOpening ? (
+      {isModelOpening && (
         <DeleteTodoModal closeModal={closeModal} link={link} />
-      ) : null}
+      )}
     </div>
   );
 };
