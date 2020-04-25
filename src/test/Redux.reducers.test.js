@@ -31,7 +31,6 @@ describe('Reducers', () => {
       type: DELETE_LINK,
       payload: { id: 1 },
     });
-    console.log(newState);
 
     expect(
       linkListReducer([{ id: 1, text: 'Deneme' }], {
