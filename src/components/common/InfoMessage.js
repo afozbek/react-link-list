@@ -1,7 +1,7 @@
 import React from 'react';
 
-const InfoMessage = ({ message }) => {
-  return <p>{message}</p>;
+const InfoMessage = ({ children }) => {
+  return <p>{children}</p>;
 };
 
 export default InfoMessage;

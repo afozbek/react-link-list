@@ -39,7 +39,9 @@ const Main = ({ linkList }) => {
           </select>
         </React.Fragment>
       ) : (
-        <InfoMessage message="Hemen yeni bir link eklemek için yukarıdaki butonu kullanın. 👆👆😊😉" />
+        <InfoMessage>
+          Hemen yeni bir link eklemek için yukarıdaki butonu kullanın. 👆👆😊😉
+        </InfoMessage>
       )}
 
       <LinkList
@@ -48,14 +50,14 @@ const Main = ({ linkList }) => {
         currentPage={currentPage}
       />
 
-      {linkList.length > pageSize ? (
+      {linkList.length > pageSize && (
         <Pagination
           pageSize={pageSize}
           currentPage={currentPage}
           totalElements={linkList.length}
           changePage={(pageNumber) => setCurrentPage(pageNumber)}
         />
-      ) : null}
+      )}
     </React.Fragment>
   );
 };

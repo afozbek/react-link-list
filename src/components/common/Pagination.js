@@ -15,6 +15,7 @@ const Pagination = ({ totalElements, pageSize, changePage, currentPage }) => {
   const buttons = getPages().map((i) => (
     <button
       key={i}
+      data-test="paginationButton"
       className={`o-app__paginationButton ${
         i === currentPage ? '-selected' : ''
       }`}
@@ -38,6 +39,7 @@ const Pagination = ({ totalElements, pageSize, changePage, currentPage }) => {
 
       <button
         className="o-app__paginationButton"
+        data-test="nextPageButton"
         onClick={() => changePage(currentPage + 1)}
       >
         &gt;

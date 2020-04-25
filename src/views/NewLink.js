@@ -8,7 +8,7 @@ import { addLink } from '../store/linkList/actions';
 import { SubmitButton } from '../components/common/SubmitButton';
 import FormControl from '../components/NewLink/FormControl';
 
-import { isValidURL, haveEnoughCharacters } from '../util';
+import { isValidURL } from '../util';
 
 const NewLink = ({ addLink, notify }) => {
   const [linkName, setLinkName] = useState('');
@@ -16,6 +16,11 @@ const NewLink = ({ addLink, notify }) => {
 
   const addNewLink = (e) => {
     e.preventDefault();
+
+    if (!isValidURL(linkUrl)) {
+      notify('Url valid değil');
+      return;
+    }
 
     const newLink = {
       id: Math.random(),
@@ -50,7 +55,7 @@ const NewLink = ({ addLink, notify }) => {
       <FormControl
         id="link_url"
         labelName="Link Url:"
-        type="text"
+        type="url"
         placeholder="e.g. http://abc.xyz"
         isRequired={true}
         changeHandler={(e) => setLinkUrl(e.target.value)}
