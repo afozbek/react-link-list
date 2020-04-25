@@ -10,7 +10,7 @@ const App = ({ notification }) => {
   return (
     <Router>
       <div className="o-app__container">
-        {notification.showNotification ? <Notification /> : null}
+        {notification.showNotification && <Notification />}
 
         <Switch>
           <Route path="/new-link">

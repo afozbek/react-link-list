@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { clearNotify } from '../../store/notification/actions';
 import PropTypes from 'prop-types';
 
-const Notification = ({ notification, clearNotify }) => {
+export const Notification = ({ notification, clearNotify }) => {
   setTimeout(() => {
     clearNotify();
   }, notification.displayTime);
@@ -24,5 +24,4 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   clearNotify,
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);
