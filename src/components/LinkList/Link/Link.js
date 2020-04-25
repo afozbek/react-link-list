@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { upVote, downVote, deleteLink } from '../store/linkList/actions';
-import DeleteTodoModal from './DeleteTodoModal';
+import { upVote, downVote } from '../../../store/linkList/actions';
+import DeleteTodoModal from '../../modals/DeleteTodoModal';
 
-const Link = ({ link, deleteLink, upVote, downVote }) => {
+const Link = ({ link, upVote, downVote }) => {
   const [isModelOpening, setModal] = useState(false);
 
   const closeModal = () => {
-    // Save the todo item
     setModal(false);
   };
 
@@ -41,6 +41,12 @@ const Link = ({ link, deleteLink, upVote, downVote }) => {
       ) : null}
     </div>
   );
+};
+
+Link.propTypes = {
+  upVote: PropTypes.func.isRequired,
+  downVote: PropTypes.func.isRequired,
+  link: PropTypes.object.isRequired,
 };
 
 const mapDispatchToProps = {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { clearNotify } from '../store/notification/actions';
+import { clearNotify } from '../../store/notification/actions';
+import PropTypes from 'prop-types';
 
 const Notification = ({ notification, clearNotify }) => {
   setTimeout(() => {
@@ -9,6 +10,11 @@ const Notification = ({ notification, clearNotify }) => {
   }, notification.displayTime);
 
   return <div className="m-notification">{notification.text}</div>;
+};
+
+Notification.propTypes = {
+  notification: PropTypes.object.isRequired,
+  clearNotify: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

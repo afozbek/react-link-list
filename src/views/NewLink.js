@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { notify } from '../store/notification/actions';
 import { addLink } from '../store/linkList/actions';
 import { NavLink } from 'react-router-dom';
+import { SubmitButton } from '../components/common/SubmitButton';
 
 const NewLink = ({ addLink, notify }) => {
   const [linkName, setLinkName] = useState('');
@@ -58,9 +59,7 @@ const NewLink = ({ addLink, notify }) => {
         />
       </div>
 
-      <button className="a-submitBtn" type="submit">
-        ADD
-      </button>
+      <SubmitButton />
     </form>
   );
 };
