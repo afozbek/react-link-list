@@ -17,11 +17,6 @@ const NewLink = ({ addLink, notify }) => {
   const addNewLink = (e) => {
     e.preventDefault();
 
-    if (!isValidURL(linkUrl)) {
-      notify('Url valid değil');
-      return;
-    }
-
     const newLink = {
       id: Math.random(),
       text: linkName,
