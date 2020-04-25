@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import LinkList from './LinkList';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Pagination from './Pagination';
+
+import LinkList from '../components/LinkList/LinkList';
+import Pagination from '../components/common/Pagination';
 
 const Main = ({ linkList }) => {
   const [filter, setFilter] = useState('');
@@ -25,15 +26,18 @@ const Main = ({ linkList }) => {
 
         <hr />
 
-        <select
-          name="filter_linkList"
-          id="filter_linkList"
-          onChange={changeFilter}
-        >
-          <option value="ALL">Order By</option>
-          <option value="MOST_VOTED">Most Voted(Z->A)</option>
-          <option value="LESS_VOTED">Less Voted(A->Z)</option>
-        </select>
+        {linkList.length > 0 ? (
+          <select
+            name="filter_linkList"
+            id="filter_linkList"
+            style={{ marginTop: 10 }}
+            onChange={changeFilter}
+          >
+            <option value="ALL">Order By</option>
+            <option value="MOST_VOTED">Most Voted(Z->A)</option>
+            <option value="LESS_VOTED">Less Voted(A->Z)</option>
+          </select>
+        ) : null}
 
         <LinkList
           activeFilter={filter}

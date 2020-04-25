@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Link from './Link';
+import Link from './Link/Link';
 import { connect } from 'react-redux';
-import Pagination from './Pagination';
 
 class LinkList extends Component {
   filterLinkList = (filterType) => {
@@ -35,6 +35,10 @@ class LinkList extends Component {
     return <div>{pageList}</div>;
   }
 }
+
+LinkList.propTypes = {
+  linkList: PropTypes.array.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   linkList: state.linkList,

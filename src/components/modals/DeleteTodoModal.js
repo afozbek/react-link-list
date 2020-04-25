@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { deleteLink } from './../store/linkList/actions';
-import { notify } from './../store/notification/actions';
+import { deleteLink } from '../../store/linkList/actions';
+import { notify } from '../../store/notification/actions';
 
-const EditTodoModal = ({ closeModal, link, deleteLink, notify }) => {
+const DeleteTodoModal = ({ closeModal, link, deleteLink, notify }) => {
   const modal = useRef();
 
   const overlayClickHandler = (e) => {
@@ -58,11 +58,16 @@ const EditTodoModal = ({ closeModal, link, deleteLink, notify }) => {
   );
 };
 
-EditTodoModal.propTypes = {};
+DeleteTodoModal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  link: PropTypes.object.isRequired,
+  deleteLink: PropTypes.func.isRequired,
+  notify: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = {
   deleteLink,
   notify,
 };
 
-export default connect(null, mapDispatchToProps)(EditTodoModal);
+export default connect(null, mapDispatchToProps)(DeleteTodoModal);

@@ -8,18 +8,3 @@ export const keyCodes = {
   down: 40,
   delete: 46,
 };
-
-// export const getLocalStorageTodoState = (stringify = false) => {
-//   const todoState = localStorage.getItem(LOCALSTORAGE_TODO_STATE);
-//   const newState = todoState
-//     ? stringify
-//       ? JSON.stringify(todoState)
-//       : JSON.parse(todoState)
-//     : [];
-
-//   return newState;
-// };
-
-// export const setToLocalStorage = (newState) => {
-//   localStorage.setItem(LOCALSTORAGE_TODO_STATE, JSON.stringify(newState));
-// };
