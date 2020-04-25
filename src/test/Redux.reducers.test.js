@@ -31,7 +31,6 @@ describe('Reducers', () => {
       type: DELETE_LINK,
       payload: { id: 1 },
     });
-    console.log(newState);
 
     expect(
       linkListReducer([{ id: 1, text: 'Deneme' }], {
@@ -55,7 +54,12 @@ describe('Reducers', () => {
       )
     ).toEqual([
       { id: 1, text: 'Deneme', points: 0 },
-      { id: 2, text: 'Deneme1', points: 2 },
+      {
+        id: 2,
+        text: 'Deneme1',
+        points: 2,
+        last_voted_time: new Date().getTime(),
+      },
     ]);
   });
 
@@ -73,7 +77,12 @@ describe('Reducers', () => {
       )
     ).toEqual([
       { id: 1, text: 'Deneme', points: 0 },
-      { id: 2, text: 'Deneme1', points: 0 },
+      {
+        id: 2,
+        text: 'Deneme1',
+        points: 0,
+        last_voted_time: new Date().getTime(),
+      },
     ]);
   });
 

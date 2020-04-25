@@ -36,8 +36,6 @@ describe('Link.js', () => {
       <Link downVote={downVote} upVote={upVote} link={link} />
     );
 
-    console.log(wrapper);
-
     const upVoteButton = wrapper.find('[data-upvote-test]');
     const downVoteButton = wrapper.find('[data-downvote-test]');
     const deleteButton = wrapper.find('[data-delete-test]');

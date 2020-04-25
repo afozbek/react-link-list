@@ -12,9 +12,21 @@ class LinkList extends Component {
 
     switch (filterType) {
       case MOST_VOTED:
-        return this.props.linkList.sort((l1, l2) => l2.points - l1.points);
+        return this.props.linkList.sort((l1, l2) => {
+          if (l2.points === l1.points) {
+            return l2.last_voted_time - l1.last_voted_time;
+          }
+
+          return l2.points - l1.points;
+        });
       case LESS_VOTED:
-        return this.props.linkList.sort((l1, l2) => l1.points - l2.points);
+        return this.props.linkList.sort((l1, l2) => {
+          if (l2.points === l1.points) {
+            return l2.last_voted_time - l1.last_voted_time;
+          }
+
+          return l1.points - l2.points;
+        });
       default:
         return this.props.linkList.sort(
           (l1, l2) => l2.created_time - l1.created_time

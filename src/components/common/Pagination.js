@@ -25,9 +25,6 @@ const Pagination = ({ totalElements, pageSize, changePage, currentPage }) => {
     </button>
   ));
 
-  console.log(currentPage);
-  console.log(Math.ceil(totalElements / pageSize));
-
   return (
     <div className="o-app__paginationWrapper">
       {currentPage !== 0 && (
