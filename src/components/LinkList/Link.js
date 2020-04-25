@@ -15,7 +15,7 @@ const Link = ({ link, upVote, downVote }) => {
   return (
     <div className="m-link">
       <div className="m-link__point">
-        <p>{link.points}</p>
+        <h1>{link.points}</h1>
         <p>POINTS</p>
       </div>
       <div className="m-link__desc">
