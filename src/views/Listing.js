@@ -30,7 +30,7 @@ const Main = ({ linkList }) => {
           <select
             name="filter_linkList"
             id="filter_linkList"
-            style={{ marginTop: 10 }}
+            style={{ marginTop: 10, padding: 10 }}
             onChange={changeFilter}
           >
             <option value="ALL">Order By</option>
