@@ -15,12 +15,14 @@ const NewLink = ({ addLink, notify }) => {
   const addNewLink = (e) => {
     e.preventDefault();
 
+    const time = new Date().getTime();
     const newLink = {
       id: Math.random(),
       text: linkName,
       url: linkUrl,
       points: 0,
-      created_time: new Date().getTime(),
+      created_time: time,
+      last_voted_time: time,
     };
 
     addLink(newLink);

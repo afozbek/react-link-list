@@ -44,7 +44,11 @@ const addLink = (state, link) => {
 const upVoteLink = (state, id) => {
   const newState = state.map((link) => {
     if (link.id === id) {
-      return { ...link, points: link.points + 1 };
+      return {
+        ...link,
+        points: link.points + 1,
+        last_voted_time: new Date().getTime(),
+      };
     }
     return link;
   });
@@ -57,7 +61,11 @@ const upVoteLink = (state, id) => {
 const downVoteLink = (state, id) => {
   const newState = state.map((link) => {
     if (link.id === id && link.points >= 1) {
-      return { ...link, points: link.points - 1 };
+      return {
+        ...link,
+        points: link.points - 1,
+        last_voted_time: new Date().getTime(),
+      };
     }
     return link;
   });
