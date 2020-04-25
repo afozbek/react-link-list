@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import LinkList from '../components/LinkList/LinkList';
 import Pagination from '../components/common/Pagination';
+import InfoMessage from './../components/common/InfoMessage';
 
 const Main = ({ linkList }) => {
   const [filter, setFilter] = useState('');
@@ -18,15 +19,14 @@ const Main = ({ linkList }) => {
 
   return (
     <React.Fragment>
-      <div className="o-app__container">
-        <NavLink className="o-app__newLinkButton" to="/new-link">
-          <div className="o-app__plusBlock">+</div>
-          <div className="o-app__desc">Submit a Link</div>
-        </NavLink>
+      <NavLink className="o-app__newLinkButton" to="/new-link">
+        <div className="o-app__plusBlock">+</div>
+        <div className="o-app__desc">Submit a Link</div>
+      </NavLink>
 
-        <hr />
-
-        {linkList.length > 0 ? (
+      {linkList.length > 0 ? (
+        <React.Fragment>
+          <hr />
           <select
             name="filter_linkList"
             id="filter_linkList"
@@ -37,23 +37,25 @@ const Main = ({ linkList }) => {
             <option value="MOST_VOTED">Most Voted(Z->A)</option>
             <option value="LESS_VOTED">Less Voted(A->Z)</option>
           </select>
-        ) : null}
+        </React.Fragment>
+      ) : (
+        <InfoMessage message="Hemen yeni bir link eklemek için yukarıdaki butonu kullanın. 👆👆😊😉" />
+      )}
 
-        <LinkList
-          activeFilter={filter}
+      <LinkList
+        activeFilter={filter}
+        pageSize={pageSize}
+        currentPage={currentPage}
+      />
+
+      {linkList.length > pageSize ? (
+        <Pagination
           pageSize={pageSize}
           currentPage={currentPage}
+          totalElements={linkList.length}
+          changePage={(pageNumber) => setCurrentPage(pageNumber)}
         />
-
-        {linkList.length > pageSize ? (
-          <Pagination
-            pageSize={pageSize}
-            currentPage={currentPage}
-            totalElements={linkList.length}
-            changePage={(pageNumber) => setCurrentPage(pageNumber)}
-          />
-        ) : null}
-      </div>
+      ) : null}
     </React.Fragment>
   );
 };
