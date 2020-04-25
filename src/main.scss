@@ -65,6 +65,11 @@
       cursor: pointer;
       padding: 5px;
 
+      &.-selected {
+        border-color: #ccc;
+        border-radius: 3px;
+      }
+
       &:hover {
         border-color: #ccc;
         border-radius: 3px;
