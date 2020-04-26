@@ -68,7 +68,7 @@ describe('Reducers', () => {
       linkListReducer(
         [
           { id: 1, text: 'Deneme', points: 0 },
-          { id: 2, text: 'Deneme1', points: 1 },
+          { id: 2, text: 'Deneme1', points: 3 },
         ],
         {
           type: DOWN_VOTE_LINK,
@@ -80,7 +80,7 @@ describe('Reducers', () => {
       {
         id: 2,
         text: 'Deneme1',
-        points: 0,
+        points: 2,
         last_voted_time: new Date().getTime(),
       },
     ]);
@@ -108,6 +108,7 @@ describe('Reducers', () => {
     showNotification: false,
     text: '',
     displayTime: 2000,
+    hasError: false,
   };
   it('should return the initial state', () => {
     expect(notificationReducer(undefined, {})).toEqual(
@@ -125,12 +126,13 @@ describe('Reducers', () => {
         },
         {
           type: NOTIFY,
-          payload: 'TEXT',
+          payload: { text: 'TEXT' },
         }
       )
     ).toEqual({
       showNotification: true,
       text: 'TEXT',
+      hasError: false,
       displayTime: 2000,
     });
   });
