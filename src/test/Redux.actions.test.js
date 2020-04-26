@@ -56,9 +56,9 @@ describe('actions', () => {
     const text = 'Başarılı bir şekilde oluştu.';
     const expectedAction = {
       type: NOTIFY,
-      payload: text,
+      payload: { text },
     };
-    expect(notify(text)).toEqual(expectedAction);
+    expect(notify({ text })).toEqual(expectedAction);
   });
 
   it('should create an action to clear notify', () => {

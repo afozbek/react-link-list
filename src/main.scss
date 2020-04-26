@@ -13,7 +13,7 @@ hr {
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-body {
+html {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -22,7 +22,7 @@ body {
     width: 350px;
     margin: 0 auto;
     position: relative;
-    padding-top: 55px;
+    padding-top: 80px;
   }
 
   &__newLinkButton {
@@ -145,11 +145,17 @@ body {
   color: #4ba149;
   position: fixed;
   z-index: 10;
-  top: 40px;
+  top: 50px;
   transform: translate(-50%, -50%);
   left: 50%;
   border: 1px solid #4ba149;
   box-shadow: -3px 0px 55px -12px rgba(0, 0, 0, 0.75);
+
+  &.-error {
+    color: white;
+    border-color: rgba(196, 70, 70, 0.288);
+    background: red;
+  }
 }
 
 .m-link {

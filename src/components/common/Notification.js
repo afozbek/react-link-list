@@ -9,7 +9,11 @@ export const Notification = ({ notification, clearNotify }) => {
     clearNotify();
   }, notification.displayTime);
 
-  return <div className="m-notification">{notification.text}</div>;
+  return (
+    <div className={`m-notification ${notification.hasError && '-error'}`}>
+      {notification.text}
+    </div>
+  );
 };
 
 Notification.propTypes = {
