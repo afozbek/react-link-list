@@ -8,9 +8,31 @@ import { addLink } from '../store/linkList/actions';
 import { SubmitButton } from '../components/common/SubmitButton';
 import FormControl from '../components/NewLink/FormControl';
 
+import { isValidURL, haveEnoughCharacters } from './../util/index';
+
 const NewLink = ({ addLink, notify }) => {
   const [linkName, setLinkName] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
+
+  const isValidForm = () => {
+    let formIsValid = true;
+    let errorMessage = '';
+
+    if (!isValidURL(linkUrl)) {
+      formIsValid = false;
+      errorMessage = 'Lütfen düzgün bir url giriniz';
+    }
+
+    if (!haveEnoughCharacters(linkName)) {
+      formIsValid = false;
+      errorMessage = 'Lütfen boşluk harici en az 5 karakter giriniz.';
+    }
+
+    if (!formIsValid) {
+      notify({ text: errorMessage, hasError: true });
+    }
+    return formIsValid;
+  };
 
   const addNewLink = (e) => {
     e.preventDefault();
@@ -25,10 +47,14 @@ const NewLink = ({ addLink, notify }) => {
       last_voted_time: time,
     };
 
+    if (!isValidForm()) {
+      return;
+    }
+
     addLink(newLink);
 
     const notifyText = linkName + ' added.';
-    notify(notifyText);
+    notify({ text: notifyText });
 
     e.target.reset();
 
