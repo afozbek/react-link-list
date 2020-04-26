@@ -1,8 +1,8 @@
 import { NOTIFY, CLEAR_NOTIFY } from './types';
 
-export const notify = (text) => ({
+export const notify = (notificationObj) => ({
   type: NOTIFY,
-  payload: text,
+  payload: notificationObj,
 });
 
 export const clearNotify = () => ({

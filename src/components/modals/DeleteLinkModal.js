@@ -18,7 +18,7 @@ const DeleteLinkModal = ({ closeModal, link, deleteLink, notify }) => {
     deleteLink(link.id);
 
     const notifyText = link.text + ' removed.';
-    notify(notifyText);
+    notify({ text: notifyText });
   };
 
   return (

@@ -1,6 +1,11 @@
 import { NOTIFY, CLEAR_NOTIFY } from './types';
 
-const initialState = { showNotification: false, text: '', displayTime: 2000 };
+const initialState = {
+  showNotification: false,
+  text: '',
+  displayTime: 2000,
+  hasError: false,
+};
 
 export const notificationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -15,11 +20,12 @@ export const notificationReducer = (state = initialState, action) => {
   }
 };
 
-const notify = (state, text) => {
+const notify = (state, obj) => {
   return {
     ...state,
     showNotification: true,
-    text,
+    text: obj.text,
+    hasError: obj.hasError || false,
   };
 };
 
