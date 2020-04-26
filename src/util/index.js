@@ -16,17 +16,11 @@ export const FILTER_TYPES = {
 
 export const isValidURL = (str) => {
   const pattern = new RegExp(
-    '^(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
-      '((\\d{1,3}\\.){3}\\d{1,3}))' +
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
-      '(\\?[;&a-z\\d%_.~+=-]*)?' +
-      '(\\#[-a-z\\d_]*)?$',
-    'i'
+    '(?:(?:https?|ftp|file)://|www.|ftp.)(?:([-A-Z0-9+&@#/%=~_|$?!:,.]*)|[-A-Z0-9+&@#/%=~_|$?!:,.])*(?:([-A-Z0-9+&@#/%=~_|$?!:,.]*)|[A-Z0-9+&@#/%=~_|$])'
   );
-  return !!pattern.test(str);
+  return pattern.test(str);
 };
 
-export const haveEnoughCharacters = (str, length) => {
-  return str.trim().length >= length;
+export const haveEnoughCharacters = (str) => {
+  return /.{5,}/.test(str);
 };
