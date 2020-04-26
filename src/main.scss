@@ -150,6 +150,12 @@ body {
   left: 50%;
   border: 1px solid #4ba149;
   box-shadow: -3px 0px 55px -12px rgba(0, 0, 0, 0.75);
+
+  &.-error {
+    color: white;
+    border-color: rgba(196, 70, 70, 0.288);
+    background: red;
+  }
 }
 
 .m-link {
