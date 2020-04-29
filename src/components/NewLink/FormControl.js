@@ -7,6 +7,7 @@ const FormControl = ({
   placeholder,
   isRequired,
   changeHandler,
+  value,
 }) => {
   return (
     <div className="m-linkForm__group">
@@ -21,6 +22,7 @@ const FormControl = ({
         type={type}
         required={isRequired}
         onChange={changeHandler}
+        value={value}
       />
     </div>
   );

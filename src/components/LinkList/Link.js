@@ -4,13 +4,34 @@ import PropTypes from 'prop-types';
 
 import { upVote, downVote } from '../../store/linkList/actions';
 import DeleteTodoModal from '../modals/DeleteLinkModal';
+import EditLinkModal from '../modals/EditLinkModal';
 
 export const Link = ({ link, upVote, downVote }) => {
   const [isModelOpening, setModal] = useState(false);
+  const [isModalEditing, setIsModalEditing] = useState(false);
 
   const closeModal = () => {
     setModal(false);
   };
+
+  const handleOperation = (e) => {
+    if (e.target.dataset.editing) {
+      setIsModalEditing(true);
+    } else {
+      setIsModalEditing(false);
+    }
+
+    setModal(true);
+  };
+
+  let modal = null;
+  if (isModelOpening) {
+    if (isModalEditing) {
+      modal = <EditLinkModal closeModal={closeModal} link={link} />;
+    } else {
+      modal = <DeleteTodoModal closeModal={closeModal} link={link} />;
+    }
+  }
 
   return (
     <div className="m-link" data-test>
@@ -41,16 +62,23 @@ export const Link = ({ link, upVote, downVote }) => {
       </div>
 
       <button
+        className="m-link__editButton"
+        data-edit-test
+        data-editing
+        onClick={handleOperation}
+      >
+        Edit
+      </button>
+
+      <button
         className="m-link__deleteButton"
         data-delete-test
-        onClick={() => setModal(true)}
+        onClick={handleOperation}
       >
         X
       </button>
 
-      {isModelOpening && (
-        <DeleteTodoModal closeModal={closeModal} link={link} />
-      )}
+      {modal}
     </div>
   );
 };
