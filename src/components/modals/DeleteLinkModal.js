@@ -38,7 +38,7 @@ const DeleteLinkModal = ({ closeModal, link, deleteLink, notify }) => {
 
           <div className="m-modal__buttonWrapper">
             <button className="a-submitBtn" onClick={deleteLinkHandler}>
-              OK
+              DELETE
             </button>
             <button className="a-submitBtn" onClick={() => closeModal()}>
               CANCEL
