@@ -4,6 +4,7 @@ import {
   UP_VOTE_LINK,
   DOWN_VOTE_LINK,
   DELETE_LINK,
+  EDIT_LINK,
 } from './types';
 
 export const getLinkList = () => ({
@@ -24,6 +25,14 @@ export const upVote = (id) => ({
 export const downVote = (id) => ({
   type: DOWN_VOTE_LINK,
   payload: id,
+});
+
+export const editLink = (id, newLink) => ({
+  type: EDIT_LINK,
+  payload: {
+    id,
+    link: newLink,
+  },
 });
 
 export const deleteLink = (id) => ({

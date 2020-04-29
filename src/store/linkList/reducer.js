@@ -4,6 +4,7 @@ import {
   UP_VOTE_LINK,
   DOWN_VOTE_LINK,
   DELETE_LINK,
+  EDIT_LINK,
 } from './types';
 
 const initialState = JSON.parse(localStorage.getItem('linkList')) || [];
@@ -21,6 +22,9 @@ export const linkListReducer = (state = initialState, action) => {
 
     case DOWN_VOTE_LINK:
       return downVoteLink(state, action.payload);
+
+    case EDIT_LINK:
+      return editLink(state, action.payload);
 
     case DELETE_LINK:
       return deleteLink(state, action.payload);
@@ -68,6 +72,25 @@ const downVoteLink = (state, id) => {
       };
     }
     return link;
+  });
+
+  localStorage.setItem('linkList', JSON.stringify(newState));
+
+  return newState;
+};
+
+const editLink = (state, payload) => {
+  const { id, link } = payload;
+
+  const newState = state.map((l) => {
+    if (l.id === id) {
+      return {
+        ...l,
+        text: link.text,
+        url: link.url,
+      };
+    }
+    return l;
   });
 
   localStorage.setItem('linkList', JSON.stringify(newState));
