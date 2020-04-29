@@ -5,6 +5,7 @@ import NewLink from './views/NewLink';
 import Notification from './components/common/Notification';
 import { connect } from 'react-redux';
 import Listing from './views/Listing';
+import EditLink from './views/EditLink';
 
 const App = ({ notification }) => {
   return (
@@ -13,6 +14,9 @@ const App = ({ notification }) => {
         {notification.showNotification && <Notification />}
 
         <Switch>
+          <Route path="/edit-link/:linkId">
+            <EditLink />
+          </Route>
           <Route path="/new-link">
             <NewLink />
           </Route>

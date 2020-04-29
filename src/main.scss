@@ -169,7 +169,8 @@ html {
   }
 
   &:hover {
-    .m-link__deleteButton {
+    .m-link__deleteButton,
+    .m-link__editButton {
       display: block;
     }
   }
@@ -228,6 +229,18 @@ html {
     &.-show {
       display: block;
     }
+  }
+
+  &__editButton {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    background: none;
+    border: none;
+    color: green;
+    font-size: 20px;
+    display: none;
+    cursor: pointer;
   }
 }
 
