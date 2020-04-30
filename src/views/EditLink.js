@@ -109,6 +109,7 @@ const EditLink = ({ editLink, notify, linkList }) => {
 
 EditLink.propTypes = {
   editLink: PropTypes.func.isRequired,
+  linkList: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => {

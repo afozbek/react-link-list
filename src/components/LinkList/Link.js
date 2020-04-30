@@ -67,7 +67,7 @@ export const Link = ({ link, upVote, downVote }) => {
         data-editing
         onClick={handleOperation}
       >
-        Edit
+        &#9998;
       </button>
 
       <button
